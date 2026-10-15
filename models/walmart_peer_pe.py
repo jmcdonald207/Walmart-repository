@@ -12,10 +12,10 @@ from statistics import median
 # ----------------------------- EDIT INPUTS HERE -----------------------------
 TARGET = {
     "ticker": "WMT",
-    # Latest annual diluted EPS public by the January 1, 2025 comparison date.
-    "diluted_eps": "1.91",
-    "eps_fiscal_period": "Fiscal year ended January 31, 2024",
-    "eps_publication_date": "March 15, 2024",
+    # Walmart FY2026 GAAP diluted EPS, reported before September 9, 2026.
+    "diluted_eps": "2.73",
+    "eps_fiscal_period": "Fiscal year ended January 31, 2026",
+    "eps_publication_date": "March 2026",
 }
 
 # Walmart reverse DCF inputs copied from Reverse DCF.md. These use a later
@@ -29,13 +29,23 @@ REVERSE_DCF = {
     "wacc": "7.0",
 }
 
+# Frozen comparison: September 9, 2026 unadjusted closing prices (USD),
+# divided by the most recent annual GAAP diluted EPS then publicly available.
+# Peers require independent business-model comparability judgments.
+# Source: https://stockanalysis.com/stocks/{ticker}/history/
+# Annual EPS sources:
+# COST https://www.sec.gov/Archives/edgar/data/909832/000090983225000157/costannualreport2025.pdf
+# TGT https://corporate.target.com/investors/annual/2025-annual-report/10-k-report/10-k-part-ii/item-8-financial-statements-and-supplementary-data
+# DG https://www.sec.gov/Archives/edgar/data/29534/000110465926032325/dg-20260130x10k.htm
+# DLTR https://www.sec.gov/Archives/edgar/data/935703/000093570326000056/ars2025dltr.pdf
+# BJ https://www.sec.gov/Archives/edgar/data/1531152/000153115226000003/bj-202601312025x8kex991.htm
+# WMT https://www.sec.gov/Archives/edgar/data/104169/000010416926000055/R26.htm
 PEERS = [
-    # Replace None values with your chosen price and diluted EPS figures.
-    {"ticker": "COST", "price": None, "diluted_eps": None},
-    {"ticker": "TGT", "price": None, "diluted_eps": None},
-    {"ticker": "DG", "price": None, "diluted_eps": None},
-    {"ticker": "DLTR", "price": None, "diluted_eps": None},
-    {"ticker": "BJ", "price": None, "diluted_eps": None},
+    {"ticker": "COST", "price": "902.60", "diluted_eps": "18.21"}, # FY2025
+    {"ticker": "TGT", "price": "157.52", "diluted_eps": "8.13"},   # FY2025
+    {"ticker": "DG", "price": "124.57", "diluted_eps": "6.85"},     # FY2025
+    {"ticker": "DLTR", "price": "118.39", "diluted_eps": "6.22"},   # FY2025; discontinued operations affect comparability
+    {"ticker": "BJ", "price": "88.51", "diluted_eps": "4.38"},     # FY2025
 ]
 # ---------------------------------------------------------------------------
 
