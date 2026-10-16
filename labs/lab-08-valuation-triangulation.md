@@ -22,7 +22,7 @@ Source code: [models/walmart_peer_pe.py](../models/walmart_peer_pe.py). Current 
 For the two provisional peers:
 - COST P/E = 902.60 / 18.21 ≈ 49.5662×.
 - TGT P/E = 157.52 / 8.13 ≈ 19.3752×.
-- Applied to WMT EPS 2.73: approximately $52.89–$135.32 per share, median of the two approximately $94.11.
+- Applied to WMT EPS 2.73: approximately $52.89–$135.32 per share, median of the two approximately $94.10.
 
 Removing COST leaves only TGT's approximately $52.89 *reference estimate*; removing TGT leaves COST's approximately $135.32 *reference estimate*. One peer gives no range. These are arithmetic illustrations, **not a validated fair-value range**.
 
