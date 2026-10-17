@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'walmart_all_models.py'
+      - 'models/walmart_project1.py'
       - '.github/workflows/test-models.yml'
   workflow_dispatch:
 jobs:
@@ -16,4 +17,6 @@ jobs:
       - name: Compile all scripts
         run: python -m py_compile walmart_all_models.py models/*.py references/*.py
       - name: Run all embedded scripts
-        run: python walmart_all_models.py
+        run: |
+          python walmart_all_models.py
+          python models/walmart_project1.py
