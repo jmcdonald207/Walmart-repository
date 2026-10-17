@@ -1,0 +1,19 @@
+name: Validate combined Walmart Python models
+on:
+  push:
+    paths:
+      - 'walmart_all_models.py'
+      - '.github/workflows/test-models.yml'
+  workflow_dispatch:
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile all scripts
+        run: python -m py_compile walmart_all_models.py models/*.py references/*.py
+      - name: Run all embedded scripts
+        run: python walmart_all_models.py
