@@ -43,11 +43,114 @@ def main():
             failures.append((path, exc))
             import traceback
             traceback.print_exc()
+    try:
+        additional_checks()
+    except Exception as exc:
+        failures.append(("cross-lab checks", exc))
+        import traceback
+        traceback.print_exc()
     print("\n" + "=" * 72)
-    print(f"COMPLETED: {len(selection)-len(failures)}/{len(selection)} scripts succeeded.")
+    print(f"COMPLETED: {len(selection)} script(s) attempted; {len(failures)} failure(s).")
     for path, exc in failures:
         print(f"FAILED: {path}: {type(exc).__name__}: {exc}")
     return 1 if failures else 0
+
+
+# ---------------------------------------------------------------------------
+# Additional cross-lab work: reproducible computations and evidence register.
+# Entries marked PENDING require real filings, classmates, or course receipts.
+# This section does not present training values as Walmart intrinsic value.
+# ---------------------------------------------------------------------------
+LAB_EVIDENCE = {
+  "Labs 1-2": "PENDING: original company-selection/Week 1 records and checkout.",
+  "Lab 3": "PENDING: unaltered Edition A receipt, primary filing accession and synthetic bridge.",
+  "Lab 4": "PENDING: dated external source locators, actual AI disclosure and class checkout.",
+  "Lab 5": "TESTED HERE: twelve-item FCFF training-case output and WACC change.",
+  "Lab 6": "ADDED HERE: training-case WACC/terminal-growth grid, reverse-DCF solver; PENDING sourced Walmart FCFF.",
+  "Lab 7": "TESTED HERE: Asbury comparable P/E training values and leave-one-out.",
+  "Lab 8": "PARTIAL: peer valuation from frozen inputs; PENDING primary-source dates, peer policy record and actual AI challenge.",
+  "Lab 9": "PENDING: original Asbury three-statement engine and deliberate-break validation.",
+  "Lab 10": "PARTIAL: Walmart pro-forma checks; PENDING filing reconciliations, normalization and actual partner attack.",
+  "Lab 11": "ADDED HERE: one-at-a-time sensitivity and cash reconciliation; PENDING historical-base comparison and real feedback.",
+  "Lab 12": "PENDING: actual presentation, reviewer questions, feedback and final committee decision.",
+}
+
+def additional_checks():
+    from math import isclose
+    print("\\n" + "=" * 72)
+    print("CROSS-LAB COMPUTATIONS AND EVIDENCE STATUS")
+    print("=" * 72)
+    for lab, description in LAB_EVIDENCE.items():
+        print(f"{lab:>10} | {description}")
+
+    dcf = {}
+    exec(compile(SOURCES["models/fcff_dcf.py"], "models/fcff_dcf.py", "exec"), dcf)
+    growth = dcf["yearly_growth_rates"]
+    starting = dcf["starting_fcff"]
+    cash = dcf["non_operating_cash"]
+    debt = dcf["debt"]
+    shares = dcf["diluted_shares"]
+    base_wacc = dcf["wacc"]
+    base_g = dcf["terminal_growth"]
+
+    def dcf_price(wacc, terminal_growth, shift=0.0):
+        if terminal_growth >= wacc or wacc <= -1 or shares <= 0:
+            return None
+        fcff = starting
+        flows = []
+        for rate in growth:
+            if 1 + rate + shift <= 0:
+                return None
+            fcff *= 1 + rate + shift
+            flows.append(fcff)
+        explicit_pv = sum(cf / (1 + wacc) ** t for t, cf in enumerate(flows, 1))
+        terminal_pv = (flows[-1] * (1 + terminal_growth) /
+                       (wacc - terminal_growth) / (1 + wacc) ** len(flows))
+        return (explicit_pv + terminal_pv + cash - debt) / shares
+
+    baseline = dcf_price(base_wacc, base_g)
+    assert isclose(baseline, 27.497370, rel_tol=2e-5)
+    assert isclose(dcf_price(0.11, base_g), 23.41, abs_tol=0.02)
+    print("\\nLAB 5/6 — training DCF sensitivities (USD/share; NOT Walmart):")
+    print("WACC \\\\ terminal g |    2%       3%       4%")
+    for wacc in (0.09, 0.10, 0.11):
+        row = [dcf_price(wacc, g) for g in (0.02, 0.03, 0.04)]
+        print(f"{wacc:>6.0%}               " +
+              " ".join(" INVALID " if n is None else f"{n:8.2f}" for n in row))
+    target_price = 30.0
+    lo, hi = -0.9, 1.0
+    for _ in range(120):
+        mid = (lo + hi) / 2
+        value = dcf_price(base_wacc, base_g, mid)
+        if value is None or value < target_price:
+            lo = mid
+        else:
+            hi = mid
+    solved = (lo + hi) / 2
+    assert isclose(dcf_price(base_wacc, base_g, solved), target_price, abs_tol=1e-6)
+    print(f"LAB 6 training reverse DCF: share target \\u0024{target_price:.2f}; "
+          f"uniform growth-rate shift {solved:+.4%}; "
+          "WACC, g, cash, debt, shares fixed.")
+
+    # Re-run the actual embedded pro-forma under checks that do not modify it.
+    wmt = {}
+    exec(compile(SOURCES["models/walmart_proforma.py"], "models/walmart_proforma.py", "exec"), wmt)
+    rows = wmt["project"]()
+    wmt["assert_balanced"](rows)
+    cash_beginning = wmt["OPEN"]["cash"]
+    for row in rows:
+        cash_expected = (cash_beginning + row["fcfe"] - row["buyback"] +
+                         row["rev_draw"] - row["rev_repay"])
+        assert isclose(row["cash"], cash_expected, abs_tol=1e-6)
+        cash_beginning = row["cash"]
+    eq, terminal_fraction, per_share = wmt["value"](rows)
+    print(f"LAB 10 Walmart model: value/share \\u0024{per_share:.2f}; "
+          f"terminal value {terminal_fraction:.1%}; "
+          "all 5 balance/cash ties pass.")
+    print("CAVEAT: balancing an aggregated opening balance sheet does not verify 10-K accuracy.")
+    print("CAVEAT: the older Lab 11 report must be reconciled to this current-model base.")
+    print("CAVEAT: Lab 9's Asbury three-statement example is not yet implemented.")
+    return True
 
 if __name__ == "__main__":
     sys.exit(main())
