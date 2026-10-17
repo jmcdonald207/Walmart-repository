@@ -131,7 +131,7 @@ def main():
     verify()
     print("WALMART PROJECT 1 | FY2027-FY2031 | USD millions except per share")
     print("IMPORTANT: scenario values, WACC and bridge are PROVISIONAL; not a committee-ready fair value.")
-    print("SOURCE: FY2026 10-K filed 2026-03-13 (see docs); filing normalization and minority interest remain unresolved.")
+    print("SOURCE BASIS: model labels FY2026 Walmart 10-K; filing date and values require independent verification.")
     results={}
     for name in ("low","base","high"):
         rows=project(name)
