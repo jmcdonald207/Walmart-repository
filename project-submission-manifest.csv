@@ -1,0 +1,13 @@
+item,required,location_or_url,title,duration_or_as_of,timestamp_index,access_checked,frozen_or_commit_id,notes
+Research-Evolution.pdf,yes,,Edition A plus Edition B,,,,,Original Edition A and final Edition B not yet joined/frozen
+Repository,yes,https://github.com/jmcdonald207/Walmart-repository,Walmart Project 1,,,,,Confirm grader access
+Visible executed output,yes,,Walmart model outputs,,,,,Capture actual final run with inputs/date and qualification
+Decision memo or deck,yes,docs/decision-memo.md,Decision memo draft,,,,,Export final PDF when finance evidence is complete
+Validation-and-AI-Use.pdf,yes,docs/validation-and-ai-use.md,Validation draft,,,,,Freeze/export PDF after authentic prediction and checks
+Video 1,yes,,Research evolution,,,,,Video not yet recorded
+Transcript Video 1,yes,,Research evolution transcript,,,,,Correct real audio; docs/transcript-video-1.txt
+Video 2,yes,,Code validation,,,,,Video not yet recorded
+Transcript Video 2,yes,,Code walkthrough transcript,,,,,Correct real audio; docs/transcript-video-2.txt
+Video 3,yes,,Investment committee demonstration,,,,,Must start with actual live driver demo
+Transcript Video 3,yes,,Committee transcript,,,,,Correct real audio; docs/transcript-video-3.txt
+Optional deployed output,no,,,,,,,Not required
