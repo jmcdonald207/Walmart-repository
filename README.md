@@ -11,6 +11,12 @@ This is a collection of student research, training calculators, and work-in-prog
 - Lab 11 sensitivity reruns on Walmart pro forma: `python models/walmart_sensitivity.py`
 - Walmart peer P/E candidate calculator: `python models/walmart_peer_pe.py`
 
+## Project 1 submission working files
+- [Required-file naming and missing evidence audit](docs/submission-readiness.md)
+- [Decision memo working source](docs/decision-memo.md)
+- [Validation and AI-use working source](docs/validation-and-ai-use.md)
+- [Submission manifest](project-submission-manifest.csv)
+
 ## Project 1 finance decision and evidence
 - [Edition B committee memo — working draft](project1/edition-b-committee-memo.md)
 - [Historical source/normalization ledger](project1/historical-evidence-and-normalization.md)
@@ -28,7 +34,7 @@ This is a collection of student research, training calculators, and work-in-prog
 ## Known open items
 1. Source-check same-date peer prices and contemporaneous annual EPS; resolve peer policy before finalizing.
 2. Reconcile FY2026 opening balances and normalize one-time/basis-change items from SEC filings.
-3. Build Walmart operating pro-forma-derived **FCFF**, discount at **WACC**, and reconcile enterprise to equity.
+3. Source-verify and finalize the existing pro-forma-driven FCFF DCF's WACC and enterprise-to-common-equity bridge; current numbers are proxies.
 4. Validate training examples, check cash flows independently and keep error-producing tests.
 5. Record **actual** partner questions, locked predictions, sources and class review results.
 6. Add robust causal downside cases and a defensible final valuation range and conditional committee action.
