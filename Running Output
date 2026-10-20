@@ -1,0 +1,193 @@
+PS C:\Users\mcdon\Documents\Walmart-GitHub-Runner>  & 'C:\Users\mcdon\AppData\Local\Python\pythoncore-3.14-64\python.exe' 'c:\Users\mcdon\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '64401' '--' 'C:\Users\mcdon\Documents\Walmart-GitHub-Runner\walmart_all_models.py' 
+
+========================================================================
+RUNNING: models/fcff_dcf.py
+========================================================================
+FCFF Year 1 (USD millions): 108.0000
+FCFF Year 2 (USD millions): 114.4800
+FCFF Year 3 (USD millions): 120.2040
+FCFF Year 4 (USD millions): 125.0122
+FCFF Year 5 (USD millions): 128.7625
+PV of Years 1-5 FCFF (USD millions): 448.4408
+Terminal value at Year 5 (USD millions): 1894.6486
+PV of terminal value (USD millions): 1176.4277
+Enterprise value (USD millions): 1624.8685
+Equity value (USD millions): 1374.8685
+Value per diluted share (USD): 27.4974
+PV of terminal value / enterprise value: 0.7240
+
+========================================================================
+RUNNING: references/abg_lab07_calculator.py
+========================================================================
+
+Target: Asbury Automotive (ABG)
+Target diluted EPS: 21.500000
+
+Peer P/E multiples:
+  AutoNation (AN): 10.037825x
+  Group 1 Automotive (GPI): 11.450149x
+
+Valuation:
+  Median peer P/E: 10.743987x
+  Minimum implied price: $215.81
+  Median implied price:  $231.00
+  Maximum implied price: $246.18
+
+Peer-removal sensitivity (median-implied price):
+  Remove AutoNation (AN): $246.18 (reference estimate); change +$15.18
+  Remove Group 1 Automotive (GPI): $215.81 (reference estimate); change -$15.18
+
+========================================================================
+RUNNING: references/peer_valuation_template.py
+========================================================================
+
+Target: TargetCo
+Target diluted EPS: 4.250000
+
+Peer P/E multiples:
+  Peer A: 20.609756x
+  Peer B: 19.571429x
+  Peer C: 21.166667x
+
+Valuation:
+  Median peer P/E: 20.609756x
+  Minimum implied price: $83.18
+  Median implied price:  $87.59
+  Maximum implied price: $89.96
+
+Peer-removal sensitivity (median-implied price):
+  Remove Peer A: $86.57 (estimate); change -$1.02
+  Remove Peer B: $88.77 (estimate); change +$1.18
+  Remove Peer C: $85.39 (estimate); change -$2.21
+
+========================================================================
+RUNNING: models/walmart_peer_pe.py
+========================================================================
+Target: WMT
+Target diluted EPS: 2.73
+
+Reverse DCF and EPS:
+  Walmart reverse DCF                              | Walmart diluted EPS
+  -------------------------------------------------+--------------------------------------------
+  Implied share price: $105.83                     | Diluted EPS: $2.73
+  Valuation date: September 9, 2026                | Fiscal year ended January 31, 2026
+  Implied five-year FCFF growth: 22.3%             | Publication date: March 2026
+  Terminal growth: 2.5%                            | Different dates; no direct DCF/EPS multiple.
+
+Peer P/E multiples:
+  COST: 49.566172x
+  TGT: 19.375154x
+  DG: 18.185401x
+  DLTR: 19.033762x
+  BJ: 20.207763x
+
+Valuation:
+  Minimum peer P/E: 18.185401x
+  Median peer P/E:  19.375154x
+  Maximum peer P/E: 49.566172x
+  Minimum implied price: $49.65
+  Median implied price:  $52.89
+  Maximum implied price: $135.32
+
+Peer-removal sensitivity:
+  Remove COST: $52.43; change -$0.47
+  Remove TGT: $53.56; change +$0.67
+  Remove DG: $54.03; change +$1.14
+  Remove DLTR: $54.03; change +$1.14
+  Remove BJ: $52.43; change -$0.47
+
+========================================================================
+RUNNING: models/walmart_proforma.py
+========================================================================
+
+INCOME STATEMENT ($mm)
+                                        2026        2027        2028        2029        2030
+--------------------------------------------------------------------------------------------
+Revenue                            745,255.3   778,791.8   809,943.5   842,341.2   871,823.2
+Gross profit                       185,941.2   194,698.0   202,890.8   211,427.7   219,263.5
+SG&A                              -139,827.8  -146,218.2  -152,168.1  -158,359.3  -164,009.1
+Depreciation                       -14,969.1   -16,347.5   -17,629.3   -18,825.1   -19,944.3
+Impairment                              -0.0        -0.0        -0.0        -0.0        -0.0
+Operating income                    31,144.3    32,132.3    33,093.4    34,243.3    35,310.1
+Interest                            -2,396.0    -2,187.4    -2,021.4    -1,781.6    -1,463.3
+Pretax income                       28,748.3    29,944.9    31,072.1    32,461.7    33,846.8
+Tax                                 -7,014.6    -7,306.5    -7,581.6    -7,920.7    -8,258.6
+Net income                          21,733.7    22,638.3    23,490.5    24,541.0    25,588.2
+
+BALANCE SHEET ($mm)
+                                        Open        2026        2027        2028        2029        2030
+--------------------------------------------------------------------------------------------------------
+Cash                                10,727.0     8,000.0     8,000.0     8,000.0     8,000.0     9,484.8
+Inventory                           58,851.0    61,447.9    64,170.3    66,692.6    69,314.1    71,692.2
+PP&E                               136,083.0   148,613.9   160,266.3   171,137.0   181,312.0   190,867.7
+Other assets                        79,007.0    79,263.7    79,532.0    79,781.2    80,040.4    80,276.3
+Total assets                       284,668.0   297,325.5   311,968.7   325,610.9   338,666.5   352,320.9
+Floor plan (accounts payable)       63,061.0    65,841.5    68,758.5    71,461.2    74,270.0    76,818.2
+Debt                                38,166.0    34,666.0    31,166.0    27,666.0    24,166.0    20,666.0
+Revolver                             6,596.0     6,239.3     6,827.1     5,776.2     2,981.9         0.0
+Other liabilities                   70,958.0    70,958.0    70,958.0    70,958.0    70,958.0    70,958.0
+Total liabilities                  178,781.0   177,704.8   177,709.6   175,861.4   172,375.9   168,442.2
+Equity                             105,887.0   119,620.7   134,259.1   149,749.5   166,290.6   183,878.8
+
+CASH FLOW ($mm)
+                                        2026        2027        2028        2029        2030
+--------------------------------------------------------------------------------------------
+Net income                          21,733.7    22,638.3    23,490.5    24,541.0    25,588.2
++ Depreciation                      14,969.1    16,347.5    17,629.3    18,825.1    19,944.3
++ Impairment                             0.0         0.0         0.0         0.0         0.0
+- Capex                            -27,500.0   -28,000.0   -28,500.0   -29,000.0   -29,500.0
+- Change in inventory               -2,596.9    -2,722.4    -2,522.3    -2,621.4    -2,378.1
+- Change in other WC                  -256.7      -268.3      -249.2      -259.2      -235.9
++ Change in floor plan               2,780.5     2,917.0     2,702.7     2,808.9     2,548.1
+- Debt repayment                    -3,500.0    -3,500.0    -3,500.0    -3,500.0    -3,500.0
+Free cash flow to equity             5,629.7     7,412.2     9,050.9    10,794.4    12,466.7
+- Buyback / payout                  -8,000.0    -8,000.0    -8,000.0    -8,000.0    -8,000.0
++ Revolver draw                          0.0       587.8         0.0         0.0         0.0
+- Revolver repayment                  -356.7        -0.0    -1,050.9    -2,794.4    -2,981.9
+Ending cash                          8,000.0     8,000.0     8,000.0     8,000.0     9,484.8
+
+CHECKS
+                                        2026        2027        2028        2029        2030
+Assets - liabilities - equity       0.000000   -0.000000    0.000000    0.000000   -0.000000
+Cash >= minimum (8000)                  True        True        True        True        True
+
+VALUATION
+Equity value ($mm):            290,266.8
+Share of value after 2030:     87.7%
+Value per share ($):           36.41
+
+========================================================================
+RUNNING: models/walmart_sensitivity.py
+========================================================================
+BASE {'operating_income': 35310.0927412029, 'fcfe': 12466.660858061883, 'price': 36.40896648328673, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8769989205411282}
+NOTE: This reruns the CURRENT walmart_proforma.py assumptions; older saved Lab 11 figures are not its validation target.
+
+DRIVER: gross_margin shift 0.005 absolute ratio points
+lower values: [0.2445, 0.245, 0.2455, 0.246, 0.2465]
+ outputs: {'operating_income': 34211.59553272564, 'fcfe': 11531.537390860698, 'price': 34.13304305737756, 'balance_gap': 5.820766091346741e-11, 'terminal_share': 0.8806872360883022}
+ changes from base: {'operating_income': -1098.4972084772598, 'fcfe': -935.1234672011851, 'price': -2.27592342590917}
+base values: [0.2495, 0.25, 0.2505, 0.251, 0.2515]
+ outputs: {'operating_income': 35310.0927412029, 'fcfe': 12466.660858061883, 'price': 36.40896648328673, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8769989205411282}
+ changes from base: {'operating_income': 0.0, 'fcfe': 0.0, 'price': 0.0}
+higher values: [0.2545, 0.255, 0.2555, 0.256, 0.2565]
+ outputs: {'operating_income': 36408.58994968016, 'fcfe': 13397.409367162145, 'price': 38.67575848649948, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.873724663808128}
+ changes from base: {'operating_income': 1098.4972084772598, 'fcfe': 930.7485091002618, 'price': 2.2667920032127498}
+OUTPUT SPANS: {'operating_income': 2196.9944169545197, 'fcfe': 1865.871976301447, 'price': 4.54271542912192}
+
+DRIVER: sga_ratio shift 0.01 absolute ratio points
+lower values: [0.742, 0.741, 0.74, 0.739, 0.738]
+ outputs: {'operating_income': 37502.728042250776, 'fcfe': 14225.73569875949, 'price': 40.73910091797483, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8701339992264616}
+ changes from base: {'operating_income': 2192.635301047878, 'fcfe': 1759.0748406976072, 'price': 4.330134434688098}
+base values: [0.752, 0.751, 0.75, 0.749, 0.748]
+ outputs: {'operating_income': 35310.0927412029, 'fcfe': 12466.660858061883, 'price': 36.40896648328673, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8769989205411282}
+ changes from base: {'operating_income': 0.0, 'fcfe': 0.0, 'price': 0.0}
+higher values: [0.762, 0.761, 0.76, 0.759, 0.758]
+ outputs: {'operating_income': 33117.45744015502, 'fcfe': 10594.28351833864, 'price': 31.842346809815435, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8851792901046562}
+ changes from base: {'operating_income': -2192.635301047878, 'fcfe': -1872.3773397232435, 'price': -4.566619673471298}
+OUTPUT SPANS: {'operating_income': 4385.270602095756, 'fcfe': 3631.4521804208507, 'price': 8.896754108159396}
+
+RESTORED BASE PASS {'operating_income': 35310.0927412029, 'fcfe': 12466.660858061883, 'price': 36.40896648328673, 'balance_gap': 2.9103830456733704e-11, 'terminal_share': 0.8769989205411282}
+
+========================================================================
+COMPLETED: 6/6 scripts succeeded.
+PS C:\Users\mcdon\Documents\Walmart-GitHub-Runner> 
