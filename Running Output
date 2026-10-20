@@ -1,3 +1,5 @@
+# this output is the result of running the file walmart_all_models.py through the visual studios terminal#
+
 PS C:\Users\mcdon\Documents\Walmart-GitHub-Runner>  & 'C:\Users\mcdon\AppData\Local\Python\pythoncore-3.14-64\python.exe' 'c:\Users\mcdon\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy\launcher' '64401' '--' 'C:\Users\mcdon\Documents\Walmart-GitHub-Runner\walmart_all_models.py' 
 
 ========================================================================
